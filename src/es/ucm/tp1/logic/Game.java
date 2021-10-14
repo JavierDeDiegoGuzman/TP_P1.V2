@@ -66,4 +66,18 @@ public class Game {
 		return this.random.nextDouble();
 	}
 
+	public void updateGame() {
+		this.obstacleList.move();
+		removeDeadObject();
+		updateBoard();
+	}
+
+	public void removeDeadObject() {
+		this.obstacleList.removeDeadObstacles();
+	}
+
+	public void parseCommand(String command) {
+		
+	}
+
 }

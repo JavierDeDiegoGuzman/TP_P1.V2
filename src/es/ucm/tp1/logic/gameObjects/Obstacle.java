@@ -21,4 +21,8 @@ public class Obstacle {
 	public String toString() {
 		return "░";
 	}
+
+	public void move() {
+		this.x -= 1;
+	}
 }

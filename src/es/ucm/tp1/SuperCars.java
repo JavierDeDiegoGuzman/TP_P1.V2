@@ -55,6 +55,7 @@ public class SuperCars {
 				} catch (NumberFormatException nfe) {
 					System.out.println(SEED_IS_NUMBER_MSNG);
 					usage();
+					
 				}
 			}
 		}

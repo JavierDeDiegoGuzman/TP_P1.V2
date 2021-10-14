@@ -39,14 +39,28 @@ public class Controller {
 
 	public void printGame() {
 		System.out.println(printer);
-	}	
+	}
+	
+	public void updateGame() {
+		this.game.updateGame();
+	}
+	
+	public void promtMovement() {
+		String command;
+		System.out.print(this.PROMPT);
+		command = this.scanner.nextLine();
+		this.game.parseCommand(command);
+	}
 
 	public void printEndMessage() {
 		System.out.println(printer.endMessage());
 	}
 
 	public void run() {
+		while(true) {
 		printGame();
+		promtMovement();
+		updateGame();
+		}
 	}
-
 }

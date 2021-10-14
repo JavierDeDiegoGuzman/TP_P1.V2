@@ -21,20 +21,30 @@ public class ObstaclesList {
 		if(this.pointer < 100) {
 			this.list[this.pointer] = obstacle;
 			pointer ++;
-			System.out.println("Objeto añadido: " + String.valueOf(obstacle.getX())  + " " + String.valueOf(obstacle.getY()));
 		}
 	}
 
 	public void fillBoard(String[][] board) {
 		int index = 0;
-		System.out.println(String.valueOf(board.length) + " " + String.valueOf(board[0].length));
 		while(index < this.pointer && this.list[index].getX() < board.length) {
-			System.out.println("Boarded: " + String.valueOf(this.list[index].getX())
-			+ " " + String.valueOf(this.list[index].getY() + " " + String.valueOf(index)));
 			board[this.list[index].getX()][this.list[index].getY()] = this.list[index].toString();
 			index++;
 		}
 		
+	}
+
+	public void move() {
+		for(int i = 0; i < this.pointer; i++) {
+			this.list[i].move();
+		}
+	}
+
+	public void removeDeadObstacles() {
+		while(this.list[0].getX() < 0) {
+			for(int i = 0; i < this.pointer-1; i++) {
+				this.list[i] = this.list[i++];
+			}
+		}
 	}
 
 
