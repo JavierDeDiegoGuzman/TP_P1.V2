@@ -45,4 +45,15 @@ public enum Level {
 		}
 		return buffer.toString();
 	}
+	
+	
+	//getters
+	
+	public int getVisibility() {
+		return this.visibility;
+	}
+	public int getWidth() {
+		return this.width;
+	}
+	
 }
