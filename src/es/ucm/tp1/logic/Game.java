@@ -5,6 +5,7 @@ import java.util.Random;
 import es.ucm.tp1.control.Level;
 import es.ucm.tp1.logic.gameObjects.ObstaclesList;
 import es.ucm.tp1.logic.gameObjects.Player;
+import es.ucm.tp1.logic.gameObjects.Obstacle;
 
 public class Game {
 	
@@ -22,20 +23,27 @@ public class Game {
 		this.player = new Player(getRoadWidth()/2);
 		this.board = new String [getVisibility()][getRoadWidth()];
 		
+		
+		generateObjects();
 		updateBoard();
 		
 		
+	}
+	
+	public void generateObjects() {
+		for(int x = this.level.getVisibility()/2; x < this.level.getLenght(); x++) {
+			this.obstacleList.tryAddObstacle(new Obstacle(x, getRandomLane()), this.level.getObstacleFrecuency(), getRandomDouble());
+		}
 	}
 
 	public void updateBoard() {
 		for(int i = 0; i < getVisibility(); i++) {
 			for(int j = 0; j < getRoadWidth(); j++) {
-				if(this.player.inPosition(i, j))
-					board [i][j]= this.player.toString();
-				else
-					board [i][j] = " ";
+				board[i][j] = " ";
 			}
 		}
+		this.obstacleList.fillBoard(board);
+		this.player.fillBoard(board);
 	}
 		
 	public String positionToString(int x, int y) {
@@ -48,6 +56,14 @@ public class Game {
 
 	public int getRoadWidth() {
 		return this.level.getWidth();
+	}
+	
+	public int getRandomLane() {
+		return random.nextInt(this.level.getWidth());
+	}
+	
+	public double getRandomDouble() {
+		return this.random.nextDouble();
 	}
 
 }

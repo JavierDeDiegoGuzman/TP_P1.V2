@@ -55,5 +55,13 @@ public enum Level {
 	public int getWidth() {
 		return this.width;
 	}
+
+	public int getLenght() {
+		return this.length;
+	}
+
+	public double getObstacleFrecuency() {
+		return this.obstacleFrequency;
+	}
 	
 }

@@ -39,8 +39,7 @@ public class Controller {
 
 	public void printGame() {
 		System.out.println(printer);
-	}
-	
+	}	
 
 	public void printEndMessage() {
 		System.out.println(printer.endMessage());
@@ -48,7 +47,6 @@ public class Controller {
 
 	public void run() {
 		printGame();
-		// TODO fill your code
 	}
 
 }

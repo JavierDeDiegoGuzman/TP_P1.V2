@@ -25,5 +25,9 @@ public class Player {
 		else
 			return "@";
 	}
+	
+	public void fillBoard(String [][] board) {
+		board[this.x][this.y]=toString();
+	}
 
 }
