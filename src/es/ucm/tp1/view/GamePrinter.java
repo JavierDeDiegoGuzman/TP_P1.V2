@@ -65,9 +65,23 @@ public class GamePrinter {
 		this.indentedLanesSeparator = String.format("%n%s%s%n", margin, lanesSeparator);
 	}
 
-	protected String getInfo() {
-		// TODO your code here
-		return "";
+	protected StringBuilder getInfo() {
+		StringBuilder str = new StringBuilder();
+		
+		str.append(DISTANCE_MSG);
+		str.append(String.valueOf(this.game.getDistance())+'\n');
+		str.append(COINS_MSG);
+		str.append(String.valueOf(this.game.getPlayerCoins())+'\n');
+		str.append(CYCLE_MSG);
+		str.append(String.valueOf(this.game.getCycles())+'\n');
+		str.append(TOTAL_OBSTACLES_MSG);
+		str.append(String.valueOf(this.game.getTotalObstacles())+'\n');
+		str.append(TOTAL_COINS_MSG);
+		str.append(String.valueOf(this.game.getTotalCoins())+'\n');
+		if(!this.game.getTestMode()) 
+			str.append("Elapsed Time:" + String.valueOf((System.currentTimeMillis()-this.game.getTime())/1000));
+		
+		return str;
 	}
 
 	@Override
@@ -102,7 +116,13 @@ public class GamePrinter {
 
 		String s = GAME_OVER_MSG;
 
-		// TODO your code here
+		if(!this.game.checkPlayerStatus())
+			s += CRASH_MSG;
+		else if(this.game.checkFinishLine())
+			s += WIN_MSG;
+		
+		if(!this.game.getTestMode())
+			s += "Elapsed Time:" + String.valueOf((System.currentTimeMillis()-this.game.getTime())/1000);
 
 		return s;
 	}

@@ -2,13 +2,15 @@ package es.ucm.tp1.logic.gameObjects;
 
 public class Player {
 	
-	public int x;
-	public int y;
-	public boolean alive;
+	private int x;
+	private int y;
+	private int coinscount;
+	private boolean alive;
 	
 	public Player(int y) {
 		this.x = 0;
 		this.y = y;
+		this.coinscount = 0;
 		this.alive =true;
 	}
 
@@ -20,7 +22,7 @@ public class Player {
 	}
 	
 	public String toString() {
-		if (alive)
+		if (isAlive())
 			return ">";
 		else
 			return "@";
@@ -30,4 +32,37 @@ public class Player {
 		board[this.x][this.y]=toString();
 	}
 
+	public int getX() {
+		return this.x;
+	}
+	
+	public int getY() {
+		return this.y;
+	}
+
+	public void kill() {
+		this.alive=false;
+	}
+
+	public boolean isAlive() {
+		return this.alive;
+	}
+
+	public void addCoin() {
+		this.coinscount ++;
+	}
+
+	public void goUp() {
+		if(this.y > 0)
+			y--;
+	}
+
+	public void goDown(int i) {
+		if(this.y < i-1)
+			y++;
+	}
+
+	public Object getCoins() {
+		return this.coinscount;
+	}
 }

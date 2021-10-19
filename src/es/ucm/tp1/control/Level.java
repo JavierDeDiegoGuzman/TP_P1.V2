@@ -63,5 +63,9 @@ public enum Level {
 	public double getObstacleFrecuency() {
 		return this.obstacleFrequency;
 	}
+
+	public double getCoinFrecuency() {
+		return this.coinFrequency;
+	}
 	
 }
